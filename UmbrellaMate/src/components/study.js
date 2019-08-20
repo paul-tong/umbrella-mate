@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, Button} from 'react-native';
 import {ButtonStyle} from '../styles/buttons'
 
-
 /**
  * Test TextInput and event handle (function, arrow function)
  */
