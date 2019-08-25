@@ -10,7 +10,8 @@
   "dependencies": {
     "native-base": "^2.13.5",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-side-drawer": "^1.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

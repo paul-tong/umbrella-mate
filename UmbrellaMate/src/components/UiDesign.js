@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Container, Header, Left, Right, Body, Title, List, ListItem, Content, Form, Item, Input, Picker, Icon, Label, Badge, Footer, FooterTab, Button, Textarea, Text, Grid, Col, Row } from 'native-base';
+import { Drawer } from 'native-base';
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
+import Sidebar from './Sidebar';
 
 const styles = StyleSheet.create({
   logInButton: {
@@ -20,6 +24,53 @@ const styles = StyleSheet.create({
  * Main page 
  */
 class UI extends Component {
+  constructor(props) {
+    super(props);
+
+    this.openDrawer = this.openDrawer.bind(this);
+    this.closeDrawer = this.closeDrawer.bind(this);
+  }
+  closeDrawer = () => {
+    this.drawer._root.close()
+  };
+  openDrawer = () => {
+    this.drawer._root.open()
+  };
+
+  render() {
+    return (
+      <Container>
+        <Drawer
+          ref={(ref) => { this.drawer = ref; }}
+          content={<Sidebar closeDrawer={this.closeDrawer}/>}
+          onClose={() => this.closeDrawer()} >
+          <AppHeader openDrawer={this.openDrawer}/>
+          <Grid>
+            <Row>
+              <Button iconLeft style={{ width: '100%', height: '100%', backgroundColor: 'cornflowerblue', justifyContent: "center" }}>
+                <Icon name='umbrella' />
+                <Text uppercase={false}>Share Umbrella</Text>
+              </Button>
+            </Row>
+            <Row>
+              <Button iconLeft light style={{ width: '100%', height: '100%', justifyContent: "center" }}>
+                <Icon name='hand' />
+                <Text uppercase={false}>Request Umbrella</Text>
+              </Button>
+            </Row>
+          </Grid>
+          <AppFooter />
+        </Drawer>
+      </Container>
+    );
+  }
+}
+
+
+/**
+ * Main page 
+ */
+class MainPage1 extends Component {
   render() {
     return (
       <Container>
@@ -41,13 +92,13 @@ class UI extends Component {
         </Header>
         <Grid>
           <Row>
-            <Button iconLeft style={{ width: '100%', height: '100%', backgroundColor: 'cornflowerblue', justifyContent: "center"}}>
+            <Button iconLeft style={{ width: '100%', height: '100%', backgroundColor: 'cornflowerblue', justifyContent: "center" }}>
               <Icon name='umbrella' />
               <Text uppercase={false}>Share Umbrella</Text>
             </Button>
           </Row>
           <Row>
-            <Button iconLeft light style={{ width: '100%', height: '100%', justifyContent: "center"}}>
+            <Button iconLeft light style={{ width: '100%', height: '100%', justifyContent: "center" }}>
               <Icon name='hand' />
               <Text uppercase={false}>Request Umbrella</Text>
             </Button>
