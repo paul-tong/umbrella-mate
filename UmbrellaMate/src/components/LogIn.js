@@ -1,38 +1,54 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Title, Text, Content, Form, Item, Input, Label } from 'native-base';
+import {  Button, Text, Form, Item, Input, Label, List, ListItem, Icon } from 'native-base';
+import { styles } from '../styles/baseStyle';
 
+/**
+ * For Login, register and reset password
+ */
 class LogIn extends Component {
 	render() {
 		return (
-			<Container>
-				<Header>
-					<Left>
-						<Button hasText transparent>
-							<Text>Back</Text>
-						</Button>
-					</Left>
-					<Body>
-						<Title>Header</Title>
-					</Body>
-					<Right>
-						<Button hasText transparent>
-							<Text>Cancel</Text>
-						</Button>
-					</Right>
-				</Header>
-				<Content>
-					<Form>
-						<Item floatingLabel>
-							<Label>Username</Label>
-							<Input />
-						</Item>
-						<Item floatingLabel last>
-							<Label>Password</Label>
-							<Input />
-						</Item>
-					</Form>
-				</Content>
-			</Container>
+			<Form>
+				<Item floatingLabel>
+					<Label>Email</Label>
+					<Input textContentType='emailAddress' />
+				</Item>
+				<Item floatingLabel last>
+					<Label>Password</Label>
+					<Input secureTextEntry={true} />
+				</Item>
+				<Button
+					block
+					rounded
+					style={styles.logInButton}>
+					<Text>LogIn</Text>
+				</Button>
+				<Button
+					block
+					rounded
+					style={styles.logInButton}>
+					<Text>Register</Text>
+				</Button>
+				<Button
+					transparent
+					style={styles.resetPasswordButton}>
+					<Text>Reset Password</Text>
+				</Button>
+				<List>
+					<ListItem>
+						<Icon name='information-circle' />
+						<Input disabled placeholder='todo: show error message' />
+					</ListItem>
+					<ListItem>
+						<Icon name='information-circle' />
+						<Input disabled placeholder='todo: auto fill email' />
+					</ListItem>
+					<ListItem>
+						<Icon name='information-circle' />
+						<Input disabled placeholder='todo: auto login' />
+					</ListItem>
+				</List>
+			</Form>
 		);
 	}
 }

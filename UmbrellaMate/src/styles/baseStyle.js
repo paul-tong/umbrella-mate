@@ -31,3 +31,21 @@ export const errorText = {
   fontWeight: "700",
   color: "red"
 }
+
+export const styles = StyleSheet.create({
+  logInButton: {
+    marginHorizontal: 5,
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  resetPasswordButton: {
+    marginTop: 10,
+    alignItems: 'center',
+    alignSelf: 'flex-end',
+  },
+  startPageButton: {
+    width: '100%', 
+    height: '100%', 
+    justifyContent: "center",
+  },
+});
