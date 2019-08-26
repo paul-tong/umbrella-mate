@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button, Icon, Text } from 'native-base';
+import { Container, Grid, Row, Col, Button, Icon, Text } from 'native-base';
 import { styles } from '../styles/baseStyle';
 
-class StartPage extends Component {
+class HomePage extends Component {
   render() {
     return (
       <Grid>
@@ -23,4 +23,4 @@ class StartPage extends Component {
   }
 }
 
-export default StartPage;
+export default HomePage;

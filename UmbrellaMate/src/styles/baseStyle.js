@@ -33,6 +33,9 @@ export const errorText = {
 }
 
 export const styles = StyleSheet.create({
+  mainContainer: {
+    margin: 5,
+  },
   logInButton: {
     marginHorizontal: 5,
     marginTop: 10,

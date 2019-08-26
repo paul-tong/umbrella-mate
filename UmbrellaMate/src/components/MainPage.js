@@ -4,10 +4,16 @@ import { Drawer } from 'native-base';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import Sidebar from './Sidebar';
-import StartPage from './StartPage';
+import HomePage from './HomePage';
 import LogIn from './LogIn';
 import UserProfile from './UserProfile';
 import { styles } from '../styles/baseStyle';
+import TripHisory from './TripHistory';
+import TripForm from './TripForm';
+import FindMate from './FindMate';
+import MateList from './MateList';
+import Invitations from './Invitations';
+import Review from './Review';
 
 /**
  * Main page 
@@ -36,7 +42,7 @@ class MainPage extends Component {
           onClose={() => this.closeDrawer()} >
           <AppHeader openDrawer={this.openDrawer}/>
           <Content contentContainerStyle={{ flexGrow: 1 }}>
-            <StartPage/>
+            <Review />
           </Content>
           <AppFooter />
         </Drawer>
