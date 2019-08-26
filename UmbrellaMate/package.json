@@ -8,8 +8,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "native-base": "^2.13.5",
     "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react-native": "0.60.5",
+    "react-native-ratings": "^6.4.0",
+    "react-native-side-drawer": "^1.1.11",
+    "react-native-star-rating": "^1.1.0",
+    "react-native-table-component": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
