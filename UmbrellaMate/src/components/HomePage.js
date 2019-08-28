@@ -38,7 +38,6 @@ class HomePage extends Component {
             </Button>
           </Row>
         </Grid>
-        <AppFooter />
       </Container>
     );
   }

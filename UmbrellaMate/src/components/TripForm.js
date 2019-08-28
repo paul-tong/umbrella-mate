@@ -56,7 +56,6 @@ export default class TripForm extends Component {
             </Button>
           </Form>
         </Content>
-        <AppFooter />
       </Container>
     );
   }

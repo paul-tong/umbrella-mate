@@ -38,7 +38,7 @@ export default class Review extends Component {
               block
               rounded
               style={styles.logInButton}
-              onPress={()=>alert("Confirm")}>
+              onPress={()=>this.props.navigation.navigate('HomePage')}>
               <Text>Confirm</Text>
             </Button>
           </CardItem>

@@ -7,6 +7,8 @@ import TripForm from './TripForm';
 import FindMate from './FindMate';
 import MateList from './MateList';
 import Invitations from './Invitations';
+import Review from './Review';
+import CurrentSharing from './CurrentSharing';
 
 // drawer navigator
 const DrawerNavigator = createDrawerNavigator(
@@ -21,6 +23,12 @@ const DrawerNavigator = createDrawerNavigator(
       screen: HomePage,
       navigationOptions: {
         title: 'Home', // set the title display in drawer
+      }
+    },
+    CurrentSharing: {
+      screen: CurrentSharing,
+      navigationOptions: {
+        title: 'Current Sharing',
       }
     },
     TripHistory: { 
@@ -50,11 +58,23 @@ const DrawerNavigator = createDrawerNavigator(
     FindMate: {
       screen: FindMate,
       navigationOptions: {
-        drawerLabel: ()=>null,
+        title: 'Finging Mate(test)',
       }
     },
     MateList: {
       screen: MateList,
+      navigationOptions: {
+        drawerLabel: ()=>null,
+      }
+    },
+    Invitations: {
+      screen: Invitations,
+      navigationOptions: {
+        drawerLabel: ()=>null,
+      }
+    },
+    Review: {
+      screen: Review,
       navigationOptions: {
         drawerLabel: ()=>null,
       }
