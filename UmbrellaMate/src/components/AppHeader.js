@@ -6,7 +6,7 @@ class AppHeader extends Component {
     return (
       <Header>
         <Left>
-          <Button transparent onPress={()=>this.props.openDrawer()}>
+          <Button transparent onPress={this.props.navigation.openDrawer}>
             <Icon name='menu' />
           </Button>
         </Left>
