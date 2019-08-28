@@ -8,7 +8,8 @@ export const dimensions = {
   fullWidth: Dimensions.get('window').width
 }
   
-export const colors  = {
+export const AppColors  = {
+  theme: '#3F51B5',
   primary: '#226B74',
   secondary: '#254B5A',
   tertiary: '#5DA6A7'
