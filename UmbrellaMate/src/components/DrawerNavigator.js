@@ -9,6 +9,7 @@ import MateList from './MateList';
 import Invitations from './Invitations';
 import Review from './Review';
 import CurrentSharing from './CurrentSharing';
+import UserProfile from './UserProfile';
 
 // drawer navigator
 const DrawerNavigator = createDrawerNavigator(
@@ -37,10 +38,10 @@ const DrawerNavigator = createDrawerNavigator(
         title: 'History Trips', 
       }
     },
-    Upgrade: { 
-      screen: HomePage,
+    UserProfile: { 
+      screen: UserProfile,
       navigationOptions: {
-        title: 'Upgrade', 
+        title: 'Setting', // todo: add setting to includ change profile, upgrade
       }
     },
     LogOut: { 

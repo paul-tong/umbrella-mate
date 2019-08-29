@@ -25,7 +25,7 @@ export default class FindMate extends Component {
                 block
                 rounded
                 style={styles.logInButton}
-                onPress={()=>this.props.navigation.navigate('HomePage')}>
+                onPress={() => this.props.navigation.navigate('HomePage')}>
                 <Text>Cancel</Text>
               </Button>
             </CardItem>

@@ -2,8 +2,72 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Body, Title, Icon, Content, Form, Item, Input, Label, Button, Text } from 'native-base';
 import { styles } from '../styles/baseStyle';
 import AppFooter from './AppFooter';
+import { View, PermissionsAndroid } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
+
+
+// request location permission
+async function requestLocationPermission() {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Umbrella Mate Location Permission',
+        message:
+          'Umbrella Mate App needs access to your location ',
+        buttonNeutral: 'Ask Me Later',
+        buttonNegative: 'Cancel',
+        buttonPositive: 'OK',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      return true;
+    } else {
+      alert("Has no location permisson. Abort this operation.");
+      return false;
+    }
+  } catch (err) {
+    alert("Request location permisson error");
+    return false;
+  }
+}
 
 export default class TripForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      startPosition: {
+        latitude: null,
+        longitute: null,
+        timestamp: null,
+        address: null,
+      }
+    }
+  }
+
+  // get current location
+  componentDidMount() {
+    requestLocationPermission();
+    Geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          startPosition: {
+            latitude: position.coords.latitude,
+            longitute: position.coords.longitude,
+            timestamp: position.timestamp,
+            address: '15 Beltran Street',
+          },
+        })
+
+      },
+      (error) => {
+        alert("Cannot get location. Abort this operation.");
+        this.props.navigation.navigate('HomePage');
+      },
+      { enableHighAccuracy: true, timeout: 15000}
+    );
+  }
+
   render() {
     return (
       <Container>
@@ -19,9 +83,14 @@ export default class TripForm extends Component {
         </Header>
         <Content>
           <Form>
+            <Text> latitude: {this.state.startPosition.latitude}</Text>
+            <Text> longitude:  {this.state.startPosition.longitute}</Text>
+            <Text> timestamp:  {this.state.startPosition.timestamp}</Text>
+          </Form>
+          <Form>
             <Item inlineLabel>
               <Label>Start</Label>
-              <Input />
+              <Input editable={false} placeholder={this.state.startPosition.address} />
             </Item>
             <Item inlineLabel>
               <Label>Range</Label>
@@ -43,7 +112,7 @@ export default class TripForm extends Component {
               block
               rounded
               style={styles.logInButton}
-              onPress={()=>this.props.navigation.navigate('MateList')}>
+              onPress={() => this.props.navigation.navigate('MateList')}>
               <Text>Comfirm</Text>
             </Button>
             <Button
@@ -51,7 +120,7 @@ export default class TripForm extends Component {
               block
               rounded
               style={styles.logInButton}
-              onPress={()=>this.props.navigation.navigate('HomePage')}>
+              onPress={() => this.props.navigation.navigate('HomePage')}>
               <Text>Cancel</Text>
             </Button>
           </Form>
