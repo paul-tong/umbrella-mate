@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Icon, Body, Title, Content, Spinner, Card, CardItem, Label, Button, Text } from 'native-base';
 import { styles } from '../styles/baseStyle';
-import AppFooter from './AppFooter';
 
 export default class FindMate extends Component {
   render() {
@@ -26,13 +25,12 @@ export default class FindMate extends Component {
                 block
                 rounded
                 style={styles.logInButton}
-                onPress={()=>this.props.navigation.navigate('HomePage')}>
+                onPress={() => this.props.navigation.navigate('HomePage')}>
                 <Text>Cancel</Text>
               </Button>
             </CardItem>
           </Card>
         </Content>
-        <AppFooter />
       </Container>
     );
   }

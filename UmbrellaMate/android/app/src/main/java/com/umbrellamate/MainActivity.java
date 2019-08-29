@@ -2,6 +2,10 @@ package com.umbrellamate;
 
 import com.facebook.react.ReactActivity;
 
+import com.facebook.react.ReactActivityDelegate; // added for navigation
+import com.facebook.react.ReactRootView;
+import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+
 public class MainActivity extends ReactActivity {
 
     /**
@@ -12,4 +16,15 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "UmbrellaMate";
     }
+
+  // added for navigation, needed when click overlay to close drawer
+  @Override
+  protected ReactActivityDelegate createReactActivityDelegate() {
+    return new ReactActivityDelegate(this, getMainComponentName()) {
+      @Override
+      protected ReactRootView createRootView() {
+       return new RNGestureHandlerEnabledRootView(MainActivity.this);
+      }
+    };
+  }
 }
