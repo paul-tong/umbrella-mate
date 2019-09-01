@@ -2,35 +2,10 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Body, Title, Icon, Content, Form, Item, Input, Label, Button, Text } from 'native-base';
 import { styles } from '../styles/baseStyle';
 import AppFooter from './AppFooter';
-import { View, PermissionsAndroid } from 'react-native';
+import { View } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
-
-
-// request location permission
-async function requestLocationPermission() {
-  try {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-      {
-        title: 'Umbrella Mate Location Permission',
-        message:
-          'Umbrella Mate App needs access to your location ',
-        buttonNeutral: 'Ask Me Later',
-        buttonNegative: 'Cancel',
-        buttonPositive: 'OK',
-      },
-    );
-    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      return true;
-    } else {
-      alert("Has no location permisson. Abort this operation.");
-      return false;
-    }
-  } catch (err) {
-    alert("Request location permisson error");
-    return false;
-  }
-}
+import { requestLocationPermission } from '../utils/PermissionRequest';
+import { getLocationAdress } from '../utils/APICalls';
 
 export default class TripForm extends Component {
   constructor(props) {
@@ -55,7 +30,7 @@ export default class TripForm extends Component {
             latitude: position.coords.latitude,
             longitute: position.coords.longitude,
             timestamp: position.timestamp,
-            address: '15 Beltran Street',
+            address: getLocationAdress(position.coords.latitude, position.coords.longitude),
           },
         })
 
